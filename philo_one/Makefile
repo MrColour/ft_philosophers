@@ -6,12 +6,14 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/14 12:02:07 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/14 12:06:46 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_one
-FLAGS = -Wall -Werror -Wexta
+
+INC = -I includes/
+FLAGS = -Wall -Werror -Wextra
 
 
 FILES = \
@@ -21,6 +23,20 @@ SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILES)))
 OBJS = $(addsuffix .o, $(FILES))
 
 all: $(OBJS)
+	gcc $(FLAGS) -o $(NAME) $(OBJS)
 
 $(OBJS):
-	gcc $(FLAGS) -c $(OBJS)
+	gcc $(FLAGS) -c $(SRCS) $(INC)
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+save: fclean
+	git add .
+	git commit -m "$(MSG)"
+	git push
