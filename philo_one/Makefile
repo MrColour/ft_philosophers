@@ -6,7 +6,7 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/14 12:06:46 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/14 12:19:10 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+run: re
+	clear
+	./$(NAME)
 
 save: fclean
 	git add .

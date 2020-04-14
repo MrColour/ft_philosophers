@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:58:53 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/14 12:04:34 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/14 12:19:31 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	main(int aa, char **args)
 {
-	printf("%s\n", args[aa - aa]);
+	printf("%s worked\n", args[aa - aa]);
 	return (0);
 }
