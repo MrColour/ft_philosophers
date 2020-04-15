@@ -6,7 +6,7 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/14 12:19:10 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/14 17:57:08 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FLAGS = -Wall -Werror -Wextra
 
 FILES = \
 	main \
+	utils \
 
 SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILES)))
 OBJS = $(addsuffix .o, $(FILES))
