@@ -6,13 +6,13 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:23:16 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/14 20:08:09 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/18 00:53:31 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long	to_millisec(struct timeval *event)
+long long	tvto_microsec(struct timeval *event)
 {
 	long long result;
 
@@ -61,21 +61,31 @@ size_t	at_strncpy(char *dest, char *src, size_t len)
 	return (i);
 }
 
-size_t	eto_ad(int event, char *dest)
+int			is_digit(char c)
 {
-	size_t	len;
+	int result;
 
-	if (event == E_FORK)
-		len = at_strncpy(dest, " has taken a fork\n", 18);
-	else if (event == E_EATS)
-		len = at_strncpy(dest, " is eating\n", 11);
-	else if (event == E_SLEE)
-		len = at_strncpy(dest, " is sleeping\n", 13);
-	else if (event == E_THIN)
-		len = at_strncpy(dest, " is thinking\n", 13);
-	else if (event == E_DIED)
-		len = at_strncpy(dest, " died\n", 5);
+	if ('0' <= c && c <= '9')
+		result = 1;
 	else
-		len = at_strncpy(dest, " ["RED"ERROR"ANSI_RESET"]!\n", 19);
-	return (len);
+		result = 0;
+	return (result);
+
+}
+
+long long	philo_atoll(char *str)
+{
+	int			i;
+	long long	result;
+
+	i = 0;
+	result = 0;
+	while (str[i] != '\0' && is_digit(str[i]) == 1)
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] != '\0')
+		errno = EINVAL;
+	return (result);
 }

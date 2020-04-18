@@ -6,7 +6,7 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/14 17:57:08 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/18 02:20:07 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,11 @@ FLAGS = -Wall -Werror -Wextra
 
 
 FILES = \
+	debug \
 	main \
+	philosopher_actions \
+	program_input \
+	program_output \
 	utils \
 
 SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILES)))

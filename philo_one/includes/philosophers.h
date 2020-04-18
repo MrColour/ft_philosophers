@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:25:31 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/14 20:07:43 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/18 01:39:29 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 ** HEADERS
 */
 
+# include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <errno.h>
 
 # include <unistd.h>
 
@@ -33,8 +35,39 @@
 ** FILE: utils.c
 */
 
-long long	to_millisec(struct timeval *event);
+size_t		at_strncpy(char *dest, char *src, size_t len);
+long long	tvto_microsec(struct timeval *event);
 size_t		llto_ad(long long num, char *dest);
+long long	philo_atoll(char *str);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: program_input.c
+*/
+
+void		get_context(t_context *context, char **args);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: program_output.c
+*/
+
+void		philo_announce(int event_type, int philo_id);
 size_t		eto_ad(int event, char *dest);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: debug.c
+*/
+
+void		print_context(t_context *context);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: debug.c
+*/
+
+void	philo_eat(t_context *context, t_philosopher *philosopher);
+void	philo_sleep(t_context *context, t_philosopher *philosopher);
 
 #endif
