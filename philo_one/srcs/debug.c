@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 22:54:59 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/17 22:58:26 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:23:58 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_context(t_context *context)
 	printf("Die Threshold: %lld\n", context->time_to_die);
 	printf("Eat  Time:     %lld\n", context->eat_time);
 	printf("Sleep Time:    %lld\n", context->sleep_time);
-	printf("Total Philosophers: %d\n", context->must_eat);
+	printf("End type: %d\n", context->must_eat);
 }
 
 

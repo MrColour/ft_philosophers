@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 23:27:27 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/20 02:17:41 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:26:27 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		waiter(int request, t_philosopher *philosopher)
 {
 	int		result;
 
+	printf("Request\n");
+
 	//stuff
 	result = 1;
 	(void)request;
@@ -57,6 +59,11 @@ void	philo_start_routine(void *arg)
 
 	context = params[0];
 	philosopher = params[1];
+
+	print_context(context);
+
+	printf("\nALIVE: %d\n", philosopher->isalive);
+
 	while (philosopher->isalive == 1)
 	{
 		success = waiter(GET_FORKS, philosopher);
