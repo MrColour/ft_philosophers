@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:24:55 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/17 22:43:47 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/19 23:34:27 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_philosopher
 {
 	int			id;
 	int			event;
+	int			isalive;
+	int			state;
 }				t_philosopher;
 
 #endif
