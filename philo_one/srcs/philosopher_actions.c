@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 23:04:46 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/19 23:50:27 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:11:38 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	philo_grab(t_context *context, t_philosopher *philosopher)
 {
 	philo_announce(E_FORK, philosopher->id);
+	(void)context;
 }
 
 void	philo_eat(t_context *context, t_philosopher *philosopher)
@@ -44,6 +45,7 @@ void	philo_think(t_context *context, t_philosopher *philosopher)
 		philo_announce(E_THIN, philosopher->id);
 		philosopher->state = E_THIN;
 	}
+	(void)context;
 }
 
 void	philo_die(t_context *context, t_philosopher *philosopher)
@@ -51,4 +53,5 @@ void	philo_die(t_context *context, t_philosopher *philosopher)
 	philo_announce(E_DIED, philosopher->id);
 	philosopher->state = E_DIED;
 	philosopher->isalive = 0;
+	(void)context;
 }

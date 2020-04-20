@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 23:27:27 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/19 23:34:00 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:17:41 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,41 @@
 	// 	i++;
 	// }
 
+#define GET_FORKS 0
+#define GIVE_FORKS 1
+
+int		waiter(int request, t_philosopher *philosopher)
+{
+	int		result;
+
+	//stuff
+	result = 1;
+	(void)request;
+	(void)philosopher;
+	return (result);
+}
+
 void	philo_start_routine(void *arg)
 {
-	t_philosopher *philosopher;
+	int				success;
+	t_context		*context;
+	t_philosopher	*philosopher;
+	void			**params;
 
-	philosopher = &arg[0];
+	params = arg;
+
+	context = params[0];
+	philosopher = params[1];
 	while (philosopher->isalive == 1)
 	{
-
+		success = waiter(GET_FORKS, philosopher);
+		if (success == 1)
+		{
+			philo_eat(context, philosopher);
+			waiter(GIVE_FORKS, philosopher);
+			philo_sleep(context, philosopher);
+		}
+		else
+			philo_think(context, philosopher);
 	}
 }

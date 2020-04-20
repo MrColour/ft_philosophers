@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:58:53 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 23:32:35 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:03:37 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int aa __attribute__((unused)), char **args __attribute__((unused)))
 	a = malloc(sizeof(*a));
 	a->id = 10;
 
-	philo_eat(&context, a);
+	philo_start_routine((void*[2]){(void *) &context, (void *)a});
+
 	// if (errno == 0)
 	// {
 	// 	//initialize and then run in p_threads

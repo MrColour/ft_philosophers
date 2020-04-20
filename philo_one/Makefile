@@ -6,7 +6,7 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/18 02:20:07 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/20 02:04:27 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FLAGS = -Wall -Werror -Wextra
 
 
 FILES = \
+	core \
 	debug \
 	main \
 	philosopher_actions \

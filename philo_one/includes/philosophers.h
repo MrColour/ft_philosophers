@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:25:31 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 23:36:47 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/20 02:00:30 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 
 # include "philosopher_structs.h"
 # include "color.h"
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: core.c
+*/
+
+void		philo_start_routine(void *arg);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -61,6 +68,17 @@ size_t		eto_ad(int event, char *dest);
 */
 
 void		print_context(t_context *context);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: philosophers_actions.c
+*/
+
+void		philo_grab(t_context *context, t_philosopher *philosopher);
+void		philo_eat(t_context *context, t_philosopher *philosopher);
+void		philo_sleep(t_context *context, t_philosopher *philosopher);
+void		philo_think(t_context *context, t_philosopher *philosopher);
+void		philo_die(t_context *context, t_philosopher *philosopher);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
