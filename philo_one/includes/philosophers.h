@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:25:31 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 01:39:29 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/18 23:36:47 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 */
 
 size_t		at_strncpy(char *dest, char *src, size_t len);
-long long	tvto_microsec(struct timeval *event);
+long long	tvto_millisec(struct timeval *event);
 size_t		llto_ad(long long num, char *dest);
 long long	philo_atoll(char *str);
 

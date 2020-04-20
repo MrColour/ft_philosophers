@@ -6,13 +6,13 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:23:16 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 00:53:31 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/18 23:35:10 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long	tvto_microsec(struct timeval *event)
+long long	tvto_millisec(struct timeval *event)
 {
 	long long result;
 

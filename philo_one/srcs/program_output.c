@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 23:11:09 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 01:07:16 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/18 23:37:10 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	philo_announce(int event_type, int philo_id)
 {
 	size_t			at;
 	char			buff[100];
-	long long		micro_sec;
+	long long		milli_sec;
 	struct timeval	curr_time;
 
 	gettimeofday(&curr_time, NULL);
-	micro_sec = tvto_microsec(&curr_time);
+	milli_sec = tvto_millisec(&curr_time);
 
-	at = llto_ad(micro_sec, buff);
+	at = llto_ad(milli_sec, buff);
 	buff[at++] = ' ';
 	at += llto_ad(philo_id, &buff[at]);
 	at += eto_ad(event_type, &buff[at]);
