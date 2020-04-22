@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 23:27:27 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/20 02:26:27 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/21 22:51:41 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		waiter(int request, t_philosopher *philosopher)
 	return (result);
 }
 
-void	philo_start_routine(void *arg)
+void	*philo_start_routine(void *arg)
 {
 	int				success;
 	t_context		*context;
@@ -59,14 +59,16 @@ void	philo_start_routine(void *arg)
 
 	context = params[0];
 	philosopher = params[1];
-
+	//some mutex stuff happens here
 	print_context(context);
 
 	printf("\nALIVE: %d\n", philosopher->isalive);
 
 	while (philosopher->isalive == 1)
 	{
+		pthread_mutex_lock(context->waiter_mutex);
 		success = waiter(GET_FORKS, philosopher);
+		pthread_mutex_unlock(context->waiter_mutex);
 		if (success == 1)
 		{
 			philo_eat(context, philosopher);
@@ -76,4 +78,5 @@ void	philo_start_routine(void *arg)
 		else
 			philo_think(context, philosopher);
 	}
+	return (NULL);
 }

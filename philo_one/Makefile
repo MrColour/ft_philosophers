@@ -6,7 +6,7 @@
 #    By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/14 11:56:03 by xinu              #+#    #+#              #
-#    Updated: 2020/04/20 02:28:58 by xinu             ###   ########.fr        #
+#    Updated: 2020/04/21 23:00:13 by xinu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS = $(addprefix srcs/, $(addsuffix .c, $(FILES)))
 OBJS = $(addsuffix .o, $(FILES))
 
 all: $(OBJS)
-	gcc $(FLAGS) -o $(NAME) $(OBJS)
+	gcc $(FLAGS) -o $(NAME) $(OBJS) -pthread
 
 $(OBJS):
 	gcc $(FLAGS) -c $(SRCS) $(INC)

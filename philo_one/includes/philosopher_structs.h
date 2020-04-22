@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:24:55 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/19 23:34:27 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/21 21:51:32 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ enum	e_events
 
 typedef struct	s_context
 {
-	int			philo_total;
-	long long	time_to_die;
-	long long	eat_time;
-	long long	sleep_time;
-	int			must_eat;
+	int				philo_total;
+	long long		time_to_die;
+	long long		eat_time;
+	long long		sleep_time;
+	int				must_eat;
+	pthread_mutex_t	*waiter_mutex;
 }				t_context;
 
 typedef struct	s_philosopher
