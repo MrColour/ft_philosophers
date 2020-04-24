@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 23:04:46 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/20 14:57:07 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/24 01:03:53 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	philo_sleep(t_context *context, t_philosopher *philosopher)
 {
 	long long	microsecs;
 
-	philosopher->state = E_THIN;
+	philosopher->state = E_SLEE;
 	philo_announce(E_SLEE, philosopher->id);
 	microsecs = context->sleep_time * 1000;
 	usleep(microsecs);

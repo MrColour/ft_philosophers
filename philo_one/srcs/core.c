@@ -6,64 +6,63 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 23:27:27 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/21 22:51:41 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/24 01:23:55 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-	// pthread_t	thread_id[10];
-	// size_t		i;
-
-	// pthread_create(&thread_id[0], NULL, &color_pixel, (void*[4]){PARAMS(0)});
-	// pthread_create(&thread_id[1], NULL, &color_pixel, (void*[4]){PARAMS(100)});
-	// pthread_create(&thread_id[2], NULL, &color_pixel, (void*[4]){PARAMS(200)});
-	// pthread_create(&thread_id[3], NULL, &color_pixel, (void*[4]){PARAMS(300)});
-	// pthread_create(&thread_id[4], NULL, &color_pixel, (void*[4]){PARAMS(400)});
-	// pthread_create(&thread_id[5], NULL, &color_pixel, (void*[4]){PARAMS(500)});
-	// pthread_create(&thread_id[6], NULL, &color_pixel, (void*[4]){PARAMS(600)});
-	// pthread_create(&thread_id[7], NULL, &color_pixel, (void*[4]){PARAMS(700)});
-	// pthread_create(&thread_id[8], NULL, &color_pixel, (void*[4]){PARAMS(800)});
-	// pthread_create(&thread_id[9], NULL, &color_pixel, (void*[4]){PARAMS(900)});
-	// i = 0;
-	// while (i < 10)
-	// {
-	// 	pthread_join(thread_id[i], NULL);
-	// 	i++;
-	// }
-
 #define GET_FORKS 0
 #define GIVE_FORKS 1
 
+/*
+** When request == GET_FORKS the code
+** assumes a mutex has been done on context->waiter_mutex;
+** This works because you can't get the forks if they are in use.
+** So it is sequentially impossible to GET_FORKS and then another
+** pthread change their state to CLEAN.
+**
+** The other pthread MUST first execute the GIVE_FORKS condition
+** in order for the GET_FORKS condition to change the fork state.
+*/
+
 int		waiter(int request, t_philosopher *philosopher)
 {
-	int		result;
+	int			result;
+	t_context	*context;
 
-	printf("Request\n");
-
-	//stuff
-	result = 1;
+	result = 0;
+	context = philosopher->context;
+	if (request == GET_FORKS)
+	{
+		// printf("FORKS: %d and %d this guy: %d\n",	philosopher->left_fork_id,
+													// philosopher->right_fork_id,
+													// philosopher->id);
+		if (*(philosopher->left_fork) == CLEAN && *(philosopher->right_fork) == CLEAN)
+		{
+			*(philosopher->left_fork) = IN_USE;
+			*(philosopher->right_fork) = IN_USE;
+			result = 1;
+		}
+	}
+	if (request == GIVE_FORKS)
+	{
+		*(philosopher->left_fork) = CLEAN;
+		*(philosopher->right_fork) = CLEAN;
+	}
 	(void)request;
 	(void)philosopher;
 	return (result);
 }
 
-void	*philo_start_routine(void *arg)
+void	*philo_start_routine(void *philo_ptr)
 {
 	int				success;
 	t_context		*context;
 	t_philosopher	*philosopher;
-	void			**params;
 
-	params = arg;
-
-	context = params[0];
-	philosopher = params[1];
-	//some mutex stuff happens here
-	print_context(context);
-
-	printf("\nALIVE: %d\n", philosopher->isalive);
-
+	philosopher = philo_ptr;
+	context = philosopher->context;
 	while (philosopher->isalive == 1)
 	{
 		pthread_mutex_lock(context->waiter_mutex);

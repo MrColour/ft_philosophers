@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:24:55 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/21 21:51:32 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/24 01:11:09 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ typedef struct	s_context
 	long long		sleep_time;
 	int				must_eat;
 	pthread_mutex_t	*waiter_mutex;
+	int				*forks;
 }				t_context;
+
+#define CLEAN 0
+#define IN_USE 1
 
 typedef struct	s_philosopher
 {
@@ -39,6 +43,9 @@ typedef struct	s_philosopher
 	int			event;
 	int			isalive;
 	int			state;
+	int			*left_fork;
+	int			*right_fork;
+	t_context	*context;
 }				t_philosopher;
 
 #endif

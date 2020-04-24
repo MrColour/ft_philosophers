@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 14:09:19 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 23:44:09 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/23 23:27:02 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,28 @@ int	get_must_eat(char *str)
 	return (result);
 }
 
+int	*get_forks(int total_philosophers)
+{
+	int	i;
+	int	*forks;
+
+	i = 0;
+	forks = malloc(sizeof(*forks));
+	while (i < total_philosophers)
+	{
+		forks[i] = CLEAN;
+		i++;
+	}
+	return (forks);
+}
 
 void	get_context(t_context *context, char **args)
 {
 	errno = 0;
+	context->waiter_mutex = malloc(sizeof(*(context->waiter_mutex)));
 	if (errno == 0)
 		context->philo_total =	get_total_philo(args[1]);
+	context->forks = get_forks(context->philo_total);
 	if (errno == 0)
 		context->time_to_die =	get_time_to_die(args[2]);
 	if (errno == 0)

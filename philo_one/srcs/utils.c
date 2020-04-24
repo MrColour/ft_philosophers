@@ -6,7 +6,7 @@
 /*   By: xinu <xinu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:23:16 by xinu              #+#    #+#             */
-/*   Updated: 2020/04/18 23:35:10 by xinu             ###   ########.fr       */
+/*   Updated: 2020/04/23 21:14:53 by xinu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ size_t		llto_ad(long long num, char *dest)
 	char		buff[sizeof(long long) * 8 + 1];
 
 	i = 0;
+	if (num == 0)
+	{
+		dest[0] = '0';
+		return (1);
+	}
 	while (num != 0)
 	{
 		buff[i] = (num % 10) + '0';
